@@ -1,0 +1,8 @@
+# Dependencies & system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Tool specific
+.uix/
+*.log

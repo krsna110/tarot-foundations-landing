@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="hi-Latn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarot Foundation Course — Dr. Anchal Rana Aggarwal | ₹599</title>
+  <meta name="description" content="Tarot ko ratna band karo. Cards, planets, astrology aur timing ek hi foundation course mein. Sirf ₹599, ek baar ka payment.">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:title" content="Tarot Foundation Course — Dr. Anchal Rana Aggarwal | ₹599">
+  <meta property="og:description" content="Cards, planets, astrology aur timing ek hi foundation course mein. Sirf ₹599, ek baar ka payment.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Twinkling Starfield Canvas -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <main class="page-wrapper">
+    <!-- ================= HEADER & HERO ================= -->
+    <header class="hero-section">
+      <div class="hero-bg-glow" aria-hidden="true"></div>
+
+      <div class="container">
+        <!-- Navigation -->
+        <nav class="top-nav">
+          <span class="nav-brand">Dr. Anchal Rana Aggarwal</span>
+          <a href="#join" class="btn-gold btn-gold-sm">Course Join Karo, ₹599</a>
+        </nav>
+
+        <!-- Hero Content Grid -->
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <p class="eyebrow">TAROT FOUNDATION COURSE</p>
+            <h1 class="hero-title">
+              Webinar bhi kiya, course bhi kiya. Reading mein confidence phir bhi nahi aaya?
+            </h1>
+            <p class="hero-desc">
+              Kami aapki mehnat mein nahi hai. Meanings par ruke hue sikhne mein hai. Yahan cards, planets, astrology aur timing ek hi system mein seekho.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#join" class="btn-gold">Course Join Karo, ₹599</a>
+            </div>
+            <p class="hero-subtext">
+              Tarot Foundation Course, <strong class="text-gold">Dr. Anchal ke 10 saal ke experience</strong> par based
+            </p>
+          </div>
+
+          <!-- Hero Tarot Card with 3D Tilt & Flip -->
+          <div class="hero-card-wrapper reveal" style="transition-delay: 150ms;">
+            <div class="hero-card-container">
+              <div class="orbit-ring" aria-hidden="true"></div>
+              
+              <!-- Price Badge -->
+              <div class="hero-price-badge">
+                <span class="badge-price">₹599</span>
+                <span class="badge-sub">ek baar ka payment</span>
+              </div>
+
+              <!-- Interactive Card -->
+              <div 
+                id="heroTarotCard" 
+                class="tarot-card-interactive" 
+                role="button" 
+                tabindex="0" 
+                aria-label="Tarot card — flip karne ke liye tap karo"
+              >
+                <div class="hero-tilt">
+                  <div class="hero-flip-in">
+                    <div class="hero-flip">
+                      <!-- Front Face -->
+                      <div class="hero-face hero-front card-foil">
+                        <img 
+                          src="assets/tarot-card-front.png" 
+                          alt="The High Priestess tarot card" 
+                          class="card-img" 
+                          width="768" 
+                          height="1216"
+                        >
+                        <div class="hero-card-caption">
+                          <p class="caption-title">Dr. Anchal Rana Aggarwal</p>
+                          <p class="caption-sub">Tarot aur astrology mein 10 saal ka experience</p>
+                        </div>
+                      </div>
+                      <!-- Back Face -->
+                      <div class="hero-face hero-back">
+                        <div class="back-circle">
+                          <span class="back-star">✦</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="card-instruction">Card ko tap karo — flip ho jaayega</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= PROBLEM SECTION ================= -->
+    <section class="section">
+      <div class="container grid-two-col">
+        <div class="reveal">
+          <h2 class="section-heading">Meaning pata hai. Reading phir bhi atakti hai.</h2>
+          <p class="section-desc mt-6">
+            Client ke saamne baithte hi confidence dagmaga jaata hai. Tarot practice mein bharosa tab banta hai jab client dobara aaye — aur wapas wahi aata hai jise reading mein clarity mili.
+          </p>
+        </div>
+        <div class="reveal" style="transition-delay: 120ms;">
+          <ul class="pain-points-list">
+            <li><span class="icon-star" aria-hidden="true">✦</span>Cards ke meaning pata hain, par unhe ek reading mein jodna nahi aata</li>
+            <li><span class="icon-star" aria-hidden="true">✦</span>“Kab hoga?” ka jawab dene mein confidence nahi aata</li>
+            <li><span class="icon-star" aria-hidden="true">✦</span>Client ke saamne apni reading par shak hone lagta hai</li>
+            <li><span class="icon-star" aria-hidden="true">✦</span>Course kiya, par woh sirf meanings par ruka raha, reading karna nahi sikhaya</li>
+          </ul>
+          <p class="pain-point-footer">
+            Isiliye yeh course meanings se shuru karke planets, astrology aur timing tak jaata hai.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SYSTEM (4-CARD FAN) ================= -->
+    <section class="section section-system">
+      <div class="container">
+        <div class="reveal">
+          <h2 class="section-heading">Tarot tukdon mein nahi, ek connected system hai.</h2>
+          <p class="section-desc">Maksad simple hai: cards ko ratna nahi, samajh ke padhna.</p>
+        </div>
+
+        <div class="fan-grid" id="fanGrid">
+          <button type="button" class="fan-card" style="--rot: -3deg; --lift: 0px;" aria-pressed="false">
+            <span class="fan-roman">I</span>
+            <span class="fan-body">
+              <strong class="fan-title">Cards</strong>
+              <span class="fan-desc">Meaning aur symbolism. Cards ko ek doosre se jodke padhna.</span>
+            </span>
+          </button>
+
+          <button type="button" class="fan-card" style="--rot: -1deg; --lift: 14px;" aria-pressed="false">
+            <span class="fan-roman">II</span>
+            <span class="fan-body">
+              <strong class="fan-title">Planets</strong>
+              <span class="fan-desc">Har card ke planetary connections. Cards ke piche ka “kyun”.</span>
+            </span>
+          </button>
+
+          <button type="button" class="fan-card" style="--rot: 1deg; --lift: 14px;" aria-pressed="false">
+            <span class="fan-roman">III</span>
+            <span class="fan-body">
+              <strong class="fan-title">Astrology</strong>
+              <span class="fan-desc">Cards ko astrology ke dhaanche mein padhna. Dono ek hi picture mein.</span>
+            </span>
+          </button>
+
+          <button type="button" class="fan-card" style="--rot: 3deg; --lift: 0px;" aria-pressed="false">
+            <span class="fan-roman">IV</span>
+            <span class="fan-body">
+              <strong class="fan-title">Timing</strong>
+              <span class="fan-desc">“Kab?” ka jawab. Cards ke saath time calculation ka tareeka.</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="reveal">
+          <p class="system-disclaimer">
+            Yeh course method sikhata hai. Aapke results aapki practice par depend karte hain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SAMPLE READING WIDGET ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <div class="sample-widget">
+            <p class="eyebrow">MINI SAMPLE READING</p>
+            <h3 class="sample-title">Sawaal: “Mera naya kaam kab lagega?”</h3>
+            <p class="sample-desc">
+              Course ke andar reading aise khulti hai — card se planet tak, planet se astrology tak, aur wahan se timing tak. Khud dekho:
+            </p>
+
+            <div class="sample-grid" id="sampleCardsContainer">
+              <!-- Card 1 -->
+              <div class="sample-persp">
+                <div class="sample-flip" style="transition-delay: 0ms;">
+                  <div class="sample-face sample-front">
+                    <span class="sample-icon">✦</span>
+                    <span class="sample-label">CARD</span>
+                  </div>
+                  <div class="sample-face sample-back">
+                    <span class="sample-label">CARD</span>
+                    <span class="sample-back-title">Eight of Pentacles</span>
+                    <span class="sample-back-desc">Practice aur dedication ka card</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="sample-persp">
+                <div class="sample-flip" style="transition-delay: 420ms;">
+                  <div class="sample-face sample-front">
+                    <span class="sample-icon">✦</span>
+                    <span class="sample-label">PLANET</span>
+                  </div>
+                  <div class="sample-face sample-back">
+                    <span class="sample-label">PLANET</span>
+                    <span class="sample-back-title">Mercury</span>
+                    <span class="sample-back-desc">Skills aur communication ka grah</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="sample-persp">
+                <div class="sample-flip" style="transition-delay: 840ms;">
+                  <div class="sample-face sample-front">
+                    <span class="sample-icon">✦</span>
+                    <span class="sample-label">ASTROLOGY</span>
+                  </div>
+                  <div class="sample-face sample-back">
+                    <span class="sample-label">ASTROLOGY</span>
+                    <span class="sample-back-title">10th House</span>
+                    <span class="sample-back-desc">Career aur kaam ka ghar</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="sample-persp">
+                <div class="sample-flip" style="transition-delay: 1260ms;">
+                  <div class="sample-face sample-front">
+                    <span class="sample-icon">✦</span>
+                    <span class="sample-label">TIMING</span>
+                  </div>
+                  <div class="sample-face sample-back">
+                    <span class="sample-label">TIMING</span>
+                    <span class="sample-back-title">6–8 hafte</span>
+                    <span class="sample-back-desc">Cards ke saath time calculation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sample-actions">
+              <a href="#join" class="btn-gold btn-gold-sm">Aise Seekhna Hai? Join Karo, ₹599</a>
+              <button type="button" id="shuffleBtn" class="btn-text-gold">Cards reveal karo</button>
+            </div>
+
+            <p class="sample-note">
+              * Yeh ek illustrative sample hai. Course mein har card ke planetary, astrological aur timing connections detail mein seekhne ko milte hain.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CURRICULUM ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <h2 class="section-heading">Course mein kya-kya hai</h2>
+          <p class="section-desc">Chaar modules, ek hi connected system — meanings se lekar timing tak.</p>
+        </div>
+
+        <div class="curriculum-list">
+          <div class="curriculum-item reveal">
+            <h3 class="module-title"><span class="module-num">01</span>Tarot cards ke meaning</h3>
+            <p class="module-desc">Cards ke meaning ki foundation — har card ka symbolism, aur cards ko ek doosre ke saath jodkar padhna.</p>
+          </div>
+          <div class="curriculum-item reveal" style="transition-delay: 80ms;">
+            <h3 class="module-title"><span class="module-num">02</span>Cards ke planetary connections</h3>
+            <p class="module-desc">Har card ke peeche ka planetary link — cards ke piche ka “kyun” samajh aayega.</p>
+          </div>
+          <div class="curriculum-item reveal" style="transition-delay: 160ms;">
+            <h3 class="module-title"><span class="module-num">03</span>Astrological connections</h3>
+            <p class="module-desc">Tarot aur astrology ko jodkar padhna — dono ko ek hi picture mein dekhna.</p>
+          </div>
+          <div class="curriculum-item reveal" style="transition-delay: 240ms;">
+            <h3 class="module-title"><span class="module-num">04</span>Cards ke saath time calculation</h3>
+            <p class="module-desc">Reading mein “kab?” nikalne ka tareeka — cards ke saath timing calculate karna.</p>
+          </div>
+        </div>
+
+        <div class="reveal mt-10">
+          <a href="#join" class="btn-gold">Course Join Karo, ₹599</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FIT / QUALIFICATION ================= -->
+    <section class="section section-fit">
+      <div class="container">
+        <div class="reveal">
+          <h2 class="section-heading">Yeh course kiske liye hai</h2>
+        </div>
+
+        <div class="fit-grid mt-10">
+          <div class="fit-box fit-box-yes reveal">
+            <h3 class="fit-title text-gold">Aapke liye hai agar</h3>
+            <ul class="fit-list">
+              <li><span class="icon-star" aria-hidden="true">✦</span>Aapne tarot seekha hai par reading mein confidence nahi</li>
+              <li><span class="icon-star" aria-hidden="true">✦</span>Aap tarot ko serious practice ki tarah seekhna chahte ho</li>
+              <li><span class="icon-star" aria-hidden="true">✦</span>Aapko cards ke piche ka “kyun” samajhna hai</li>
+              <li><span class="icon-star" aria-hidden="true">✦</span>Aap astrology aur tarot jodke seekhna chahte ho</li>
+            </ul>
+          </div>
+
+          <div class="fit-box fit-box-no reveal" style="transition-delay: 120ms;">
+            <h3 class="fit-title text-muted">Aapke liye nahi hai agar</h3>
+            <ul class="fit-list text-muted">
+              <li><span class="icon-cross" aria-hidden="true">✕</span>Aap bina practice ke instant results chahte ho</li>
+              <li><span class="icon-cross" aria-hidden="true">✕</span>Aap guaranteed income ka shortcut dhoondh rahe ho</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMPARISON ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <h2 class="section-heading">YouTube pe bahut kuch hai. Fir yeh course kyun?</h2>
+        </div>
+
+        <div class="comparison-card reveal mt-10" style="transition-delay: 120ms;">
+          <div class="comparison-side comparison-free">
+            <h3 class="comparison-title text-muted">Free content</h3>
+            <p class="comparison-text text-muted">
+              Alag-alag videos, alag-alag approach. Kahan se shuru karein aur kahan tak jaayein, yeh aapko khud tay karna padta hai.
+            </p>
+          </div>
+          <div class="comparison-side comparison-paid">
+            <h3 class="comparison-title text-gold">Yeh foundation course</h3>
+            <p class="comparison-text text-white">
+              Ek fixed learning path jisme cards, planets, astrology aur timing ek hi jagah jude hue hain.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MENTOR ================= -->
+    <section class="section section-mentor">
+      <div class="container grid-mentor">
+        <div class="mentor-img-wrap reveal">
+          <div class="mentor-frame">
+            <img 
+              src="assets/mentor-portrait.jpeg" 
+              alt="Dr. Anchal Rana Aggarwal — Tarot aur astrology mentor" 
+              loading="lazy" 
+              width="1024" 
+              height="1280"
+              class="mentor-img"
+            >
+          </div>
+        </div>
+
+        <div class="mentor-bio reveal" style="transition-delay: 120ms;">
+          <p class="eyebrow">AAPKI TEACHER</p>
+          <h2 class="section-heading">Dr. Anchal Rana Aggarwal</h2>
+          <p class="section-desc mt-6">
+            Tarot aur astrology mein 10 saal ka experience. Is course ko unhone apni 10 saal ki learning ke baad design kiya hai — taaki aap wohi rasta follow kar sako jo unhone khud travel kiya hai.
+          </p>
+          <div class="mt-8">
+            <a href="#join" class="btn-gold">Course Join Karo, ₹599</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section id="join" class="section section-pricing">
+      <div class="container container-narrow text-center">
+        <div class="reveal">
+          <h2 class="section-heading">
+            <span class="block-center">Poora foundation course, sirf</span>
+          </h2>
+          <div class="price-glow">₹599</div>
+          <p class="pricing-subtitle">
+            Tarot courses aksar ₹15,000 se ₹25,000 tak ke milte hain. Yeh ek focused shuruat hai — ek baar ka payment.
+          </p>
+
+          <ul class="pricing-features">
+            <li><span class="icon-star" aria-hidden="true">✦</span>Tarot foundation course access</li>
+            <li><span class="icon-star" aria-hidden="true">✦</span>Planetary aur astrological connections</li>
+            <li><span class="icon-star" aria-hidden="true">✦</span>Time calculation ka tareeka</li>
+          </ul>
+
+          <div class="mt-9">
+            <a href="#join" class="btn-gold btn-lg">Course Join Karo, ₹599</a>
+          </div>
+
+          <p class="trust-badge">
+            Instant access · Ek baar ka payment · Koi hidden charge nahi
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ACCORDION ================= -->
+    <section class="section">
+      <div class="container container-narrow">
+        <div class="reveal">
+          <h2 class="section-heading">Aksar pooche jaane wale sawaal</h2>
+        </div>
+
+        <div class="faq-list reveal" style="transition-delay: 100ms;">
+          <!-- FAQ 1 -->
+          <details name="faq" class="faq-item" open>
+            <summary class="faq-question">
+              <span>Maine pehle bhi course kiya hai. Ab kya alag hoga?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Yeh course meanings par nahi rukta. Yeh cards ko planets, astrology aur time calculation se jodta hai, taaki aap reading ko ek structure ke saath kar sako.
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Mujhe kya seekhne ko milega?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Tarot cards ke meaning, unke planetary aur astrological connections, aur cards ke saath time calculation ka tareeka.
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Kya yeh beginners ke liye hai?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Haan — yeh ek foundation course hai. Cards ke meaning se shuru hokar planets, astrology aur timing tak ka poora rasta cover hota hai.
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Kya ₹599 worth it hai?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Agar aap meanings se aage ek structured aur connected approach seekhna chahte ho, toh yeh ek low-risk shuruat hai.
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Free content se kya alag hai?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Ek structured path, jisme tarot, astrology aur timing ek jagah jude hain — kahan se shuru karein aur kahan tak jaana hai, dono clear hain.
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Payment ke baad access kaise milega, aur kitne time tak?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Payment confirm hote hi course access mil jaata hai. Access ki poori detail join karte waqt clearly batai jaati hai.
+            </div>
+          </details>
+
+          <!-- FAQ 7 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Koi extra tool ya subscription chahiye?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Nahi. Course ke saath chalne ke liye koi extra paid tool ya subscription ki zaroorat nahi hai.
+            </div>
+          </details>
+
+          <!-- FAQ 8 -->
+          <details name="faq" class="faq-item">
+            <summary class="faq-question">
+              <span>Refund policy kya hai?</span>
+              <span class="faq-arrow" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              Refund policy checkout par clearly mention hoti hai. Koi bhi sawaal ho toh join karne se pehle pooch sakte ho.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="section section-final-cta">
+      <div class="container container-narrow text-center">
+        <div class="reveal">
+          <h2 class="section-heading">Tarot ko ratna band karo. Samajhna shuru karo.</h2>
+          <p class="final-cta-sub">Cards, planets, astrology aur timing — ek hi foundation course mein.</p>
+          <div class="mt-9">
+            <a href="#join" class="btn-gold">Course Join Karo, ₹599</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="container">
+        Dr. Anchal Rana Aggarwal · Tarot Foundation Course · © <span id="currentYear">2026</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ================= MOBILE STICKY BOTTOM BAR ================= -->
+  <aside id="stickyCta" class="sticky-cta-bar" aria-label="Quick checkout">
+    <div>
+      <span class="sticky-price">₹599</span>
+      <span class="sticky-sub">ek baar ka payment</span>
+    </div>
+    <a href="#join" class="btn-gold btn-gold-sm">Course Join Karo</a>
+  </aside>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
