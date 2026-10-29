@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 8. Single-Open FAQ Details Fallback
   initFaqAccordion();
+
+  // 9. Video Testimonials Auto-Pause & Player
+  initVideoTestimonials();
 });
 
 /* ================= 1. Ambient Starfield, Meteors & Stardust ================= */
@@ -361,6 +364,57 @@ function initFaqAccordion() {
           }
         });
       }
+    });
+  });
+}
+
+/* ================= 8. Video Testimonials Auto-Pause & Player ================= */
+function initVideoTestimonials() {
+  const cards = document.querySelectorAll(".video-card");
+  if (!cards.length) return;
+
+  const allVideos = document.querySelectorAll(".testimonial-video");
+
+  cards.forEach((card) => {
+    const video = card.querySelector(".testimonial-video");
+    const playBtn = card.querySelector(".video-play-btn");
+    if (!video) return;
+
+    function togglePlay() {
+      if (video.paused) {
+        allVideos.forEach((v) => {
+          if (v !== video && !v.paused) {
+            v.pause();
+          }
+        });
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+
+    if (playBtn) {
+      playBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        togglePlay();
+      });
+    }
+
+    video.addEventListener("play", () => {
+      allVideos.forEach((v) => {
+        if (v !== video && !v.paused) {
+          v.pause();
+        }
+      });
+      card.classList.add("is-playing");
+    });
+
+    video.addEventListener("pause", () => {
+      card.classList.remove("is-playing");
+    });
+
+    video.addEventListener("ended", () => {
+      card.classList.remove("is-playing");
     });
   });
 }
