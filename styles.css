@@ -1078,7 +1078,7 @@ h1, h2, h3, h4 {
   gap: 1rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1000px) {
   .sample-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1120,7 +1120,7 @@ h1, h2, h3, h4 {
 
 .sample-front {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 7 / 10;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1129,12 +1129,22 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 30px rgba(227, 196, 124, 0.12);
   padding: 1rem;
   text-align: center;
+  overflow: hidden;
 }
 
-.sample-icon {
-  font-family: var(--font-display);
-  font-size: 1.85rem;
-  color: rgba(227, 196, 124, 0.9);
+.sample-front-art,
+.sample-back-art {
+  position: absolute;
+  inset: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  object-fit: cover;
+  border-radius: 0.8rem;
+  pointer-events: none;
+}
+
+.sample-front-art {
+  object-position: center;
 }
 
 .sample-label {
@@ -1156,9 +1166,16 @@ h1, h2, h3, h4 {
   gap: 0.35rem;
   padding: 1.25rem 0.75rem;
   text-align: center;
-  background: linear-gradient(180deg, #21113a, #120a1f);
+  overflow: hidden;
+  background: #120a1f;
   box-shadow: 0 0 40px rgba(227, 196, 124, 0.25);
 }
+
+.sample-back-art { opacity: 0.7; }
+
+.sample-back::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(18, 10, 31, 0.45), rgba(18, 10, 31, 0.92)); }
+
+.sample-back > *:not(.sample-back-art) { position: relative; z-index: 2; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9); }
 
 .sample-back-title {
   font-family: var(--font-display);
@@ -1193,14 +1210,12 @@ h1, h2, h3, h4 {
     font-size: 0.95rem;
   }
   .sample-grid {
+    grid-template-columns: 1fr;
     gap: 0.65rem;
     margin-top: 1.25rem;
   }
   .sample-front {
     padding: 0.65rem 0.4rem;
-  }
-  .sample-icon {
-    font-size: 1.45rem;
   }
   .sample-label {
     font-size: 0.58rem;
