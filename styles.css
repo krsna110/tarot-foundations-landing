@@ -49,8 +49,13 @@ body {
     radial-gradient(ellipse 70% 45% at 50% 100%, rgba(61, 35, 99, 0.35), transparent 75%);
   background-attachment: fixed;
   line-height: 1.65;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 img, picture, svg, video {

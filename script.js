@@ -208,11 +208,18 @@ function initStarfield() {
   if (reducedMotion) {
     drawFrame(0, 0);
   } else {
-    const startTime = performance.now();
+    let startTime = performance.now();
     function loop(now) {
       drawFrame(now, (now - startTime) / 1000);
       rafId = requestAnimationFrame(loop);
     }
+    document.addEventListener("visibilitychange", () => {
+      cancelAnimationFrame(rafId);
+      if (!document.hidden) {
+        startTime = performance.now();
+        rafId = requestAnimationFrame(loop);
+      }
+    });
     rafId = requestAnimationFrame(loop);
   }
 
