@@ -1,7 +1,7 @@
 /*
  * Tarot Foundation Course — Clean Vanilla CSS Design System
  * Theme: Midnight Tarot (Deep Midnight Plum, Royal Violet, Shimmering Metallic Gold)
- * Fonts: Cinzel (Display) & Cormorant Garamond (Body)
+ * Fonts: Lora (Display) & DM Sans (Body)
  */
 
 :root {
@@ -15,11 +15,11 @@
   --gold-metallic: linear-gradient(180deg, #f3dda0, #c79f50 55%, #9c7330);
   --mist: #cbb6e4;
   --foreground: #f3ecfb;
-  --muted: #a89bbd;
+  --muted: #c7bad7;
   --border-gold: rgba(227, 196, 124, 0.3);
   --border-gold-strong: rgba(227, 196, 124, 0.6);
-  --font-display: "Cinzel", Georgia, serif;
-  --font-body: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Lora", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
 }
 
 /* ============ CSS Reset & Global Settings ============ */
@@ -198,15 +198,16 @@ h1, h2, h3, h4 {
 }
 
 .section-desc {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--muted);
   max-width: 38rem;
   margin-top: 1.25rem;
+  line-height: 1.75;
 }
 
 @media (min-width: 768px) {
   .section-desc {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
 }
 
@@ -796,14 +797,14 @@ h1, h2, h3, h4 {
 .pain-points-list li {
   position: relative;
   padding: 1.25rem 1.25rem 1.25rem 3.5rem;
-  font-size: 1.05rem;
-  line-height: 1.45;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--foreground);
 }
 
 @media (min-width: 768px) {
   .pain-points-list li {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -825,9 +826,10 @@ h1, h2, h3, h4 {
 
 .pain-point-footer {
   margin-top: 1.5rem;
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--mist);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.7;
 }
 
 /* ============ System (4-Card Fan) ============ */
@@ -1987,56 +1989,6 @@ h1, h2, h3, h4 {
    Guarantee Badge, Urgency Strip, Reveal Animations, Mobile
    ============================================================ */
 
-/* ============ 1. Social Proof / Stats Counter Strip ============ */
-.stats-strip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 2rem 2.5rem;
-  background: rgba(35, 17, 56, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-gold);
-  border-radius: 1rem;
-  box-shadow: 0 0 28px rgba(227, 196, 124, 0.1);
-  max-width: 820px;
-  margin: 0 auto;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.2rem;
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1.1;
-  text-shadow: 0 0 18px rgba(227, 196, 124, 0.25);
-}
-
-.stat-label {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--muted);
-  letter-spacing: 0.02em;
-}
-
-@media (max-width: 560px) {
-  .stats-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 1rem;
-    padding: 1.5rem 1.25rem;
-  }
-}
-
 /* ============ 2. Continuous Horizontal Video Marquee ============ */
 .video-marquee-section {
   overflow: hidden;
@@ -2279,17 +2231,6 @@ h1, h2, h3, h4 {
 
 /* ============ 7. Enhanced Mobile Responsive Tweaks ============ */
 @media (max-width: 480px) {
-  .stats-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem 0.75rem;
-    padding: 1.25rem 1rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
   .marquee-track .video-card {
     width: 260px;
   }
@@ -2319,15 +2260,6 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 360px) {
-  .stats-strip {
-    gap: 1rem 0.5rem;
-    padding: 1rem 0.75rem;
-  }
-
-  .stat-number {
-    font-size: 1.75rem;
-  }
-
   .trust-grid {
     grid-template-columns: 1fr;
   }
