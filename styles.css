@@ -151,13 +151,7 @@ img, picture, svg, video {
 }
 
 .section {
-  padding: 4.5rem 0;
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding: 6.5rem 0;
-  }
+  padding-block: clamp(4rem, 8vw, 6.5rem);
 }
 
 .text-center { text-align: center; }
@@ -177,6 +171,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   color: var(--gold);
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 .eyebrow {
@@ -189,17 +184,11 @@ h1, h2, h3, h4 {
 }
 
 .section-heading {
-  font-size: 1.85rem;
+  font-size: clamp(1.8rem, 4.4vw, 2.85rem);
   font-weight: 600;
   line-height: 1.25;
   color: var(--gold);
   text-shadow: 0 0 35px rgba(227, 196, 124, 0.2);
-}
-
-@media (min-width: 768px) {
-  .section-heading {
-    font-size: 2.85rem;
-  }
 }
 
 .section-desc {
@@ -207,7 +196,7 @@ h1, h2, h3, h4 {
   color: var(--muted);
   max-width: 38rem;
   margin-top: 1.25rem;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 @media (min-width: 768px) {
@@ -245,6 +234,14 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 54px rgba(227, 196, 124, 0.7), 0 8px 24px rgba(0, 0, 0, 0.45);
   filter: brightness(1.1);
   transform: translateY(-2px);
+}
+
+.btn-gold:focus-visible,
+.btn-text-gold:focus-visible,
+.fan-card:focus-visible,
+.faq-question:focus-visible {
+  outline: 2px solid var(--gold-soft);
+  outline-offset: 4px;
 }
 
 .btn-gold:active {
@@ -790,12 +787,20 @@ h1, h2, h3, h4 {
   }
 }
 
+.section-pain {
+  background:
+    linear-gradient(100deg, rgba(21, 11, 36, 0.96), rgba(21, 11, 36, 0.86)),
+    url("assets/fan-planets.webp") center 48% / cover no-repeat;
+  border-block: 1px solid rgba(227, 196, 124, 0.12);
+}
+
 .pain-points-list {
   list-style: none;
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   border: 1px solid rgba(227, 196, 124, 0.3);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
+  background: rgba(18, 9, 31, 0.78);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
   overflow: hidden;
 }
 
@@ -1249,16 +1254,19 @@ h1, h2, h3, h4 {
 /* ============ Curriculum ============ */
 .curriculum-list {
   margin-top: 2.5rem;
-  border-top: 1px solid var(--border-gold-strong);
+  display: grid;
+  gap: 0.85rem;
 }
 
 .curriculum-item {
   display: grid;
-  gap: 0.75rem;
-  border-bottom: 1px solid rgba(227, 196, 124, 0.3);
-  padding: 1.75rem 1.25rem;
-  border-radius: 0.75rem;
-  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(227, 196, 124, 0.22);
+  border-radius: 1rem;
+  padding: 1.35rem 1.5rem;
+  background: linear-gradient(110deg, rgba(45, 23, 73, 0.62), rgba(21, 11, 36, 0.72));
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @media (min-width: 768px) {
@@ -1270,9 +1278,9 @@ h1, h2, h3, h4 {
 
 .curriculum-item:hover {
   transform: translateX(8px);
-  background: rgba(45, 23, 73, 0.55);
-  border-color: rgba(227, 196, 124, 0.7);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), -4px 0 20px rgba(227, 196, 124, 0.35);
+  background: linear-gradient(110deg, rgba(59, 29, 92, 0.8), rgba(35, 17, 56, 0.85));
+  border-color: rgba(227, 196, 124, 0.65);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
 }
 
 .curriculum-item:hover .module-num {
@@ -1282,6 +1290,9 @@ h1, h2, h3, h4 {
 }
 
 .module-title {
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--gold);
@@ -1294,9 +1305,17 @@ h1, h2, h3, h4 {
 }
 
 .module-num {
-  display: inline-block;
-  margin-right: 0.85rem;
-  color: rgba(227, 196, 124, 0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2.65rem;
+  width: 2.65rem;
+  height: 2.65rem;
+  margin-right: 0.75rem;
+  border: 1px solid rgba(227, 196, 124, 0.45);
+  border-radius: 50%;
+  background: rgba(13, 7, 22, 0.55);
+  color: var(--gold);
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -1453,7 +1472,10 @@ h1, h2, h3, h4 {
 
 /* ============ Mentor Section ============ */
 .section-mentor {
-  background: linear-gradient(180deg, rgba(35, 17, 56, 0.6), rgba(21, 11, 36, 0));
+  background:
+    linear-gradient(100deg, rgba(21, 11, 36, 0.93), rgba(21, 11, 36, 0.86)),
+    url("assets/fan-astrology.webp") center / cover no-repeat;
+  border-block: 1px solid rgba(227, 196, 124, 0.12);
 }
 
 .grid-mentor {
@@ -1516,7 +1538,10 @@ h1, h2, h3, h4 {
 
 /* ============ Video Testimonials Section ============ */
 .section-testimonials {
-  background: radial-gradient(ellipse at 50% 20%, rgba(59, 29, 92, 0.5), transparent 75%);
+  background:
+    linear-gradient(180deg, rgba(21, 11, 36, 0.82), rgba(21, 11, 36, 0.91)),
+    radial-gradient(ellipse at 50% 20%, rgba(59, 29, 92, 0.35), transparent 75%),
+    url("assets/fan-cards.webp") center 48% / cover no-repeat;
   padding: 5rem 0;
 }
 
@@ -1703,6 +1728,17 @@ h1, h2, h3, h4 {
   padding: 5rem 0;
 }
 
+.section-pricing .container-narrow > .reveal {
+  overflow: hidden;
+  border: 1px solid rgba(227, 196, 124, 0.42);
+  border-radius: 1.75rem;
+  padding: clamp(2rem, 6vw, 4rem);
+  background:
+    linear-gradient(135deg, rgba(29, 15, 52, 0.9), rgba(18, 9, 31, 0.84)),
+    url("assets/fan-planets.webp") center / cover no-repeat;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35), 0 0 40px rgba(227, 196, 124, 0.1);
+}
+
 @media (min-width: 768px) {
   .section-pricing {
     padding: 7rem 0;
@@ -1812,7 +1848,10 @@ h1, h2, h3, h4 {
 
 /* ============ Final CTA & Footer ============ */
 .section-final-cta {
-  background: radial-gradient(ellipse at 50% 100%, rgba(75, 42, 122, 0.6), transparent 65%);
+  border-block: 1px solid rgba(227, 196, 124, 0.2);
+  background:
+    linear-gradient(90deg, rgba(21, 11, 36, 0.94), rgba(21, 11, 36, 0.84)),
+    url("assets/fan-timing.webp") center 58% / cover no-repeat;
   padding: 5rem 0;
 }
 
