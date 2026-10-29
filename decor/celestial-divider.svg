@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="80" viewBox="0 0 500 80" fill="none">
+
+<path d="M10 40H190M310 40H490" stroke="#B69558" stroke-width="1.5"/>
+<path d="M250 25L255 35L265 40L255 45L250 55L245 45L235 40L245 35Z" fill="#B69558"/>
+<circle cx="205" cy="40" r="2" fill="#B69558"/><circle cx="295" cy="40" r="2" fill="#B69558"/>
+
+</svg>

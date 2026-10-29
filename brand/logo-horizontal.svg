@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="320" viewBox="0 0 600 320" fill="none">
+
+  <g transform="translate(-50,-45) scale(.56)">
+  <path d="M270 52C207 67 173 128 187 188C201 248 258 279 314 259C275 250 244 219 237 178C228 129 244 84 270 52Z" fill="#B69558"/>
+  <path d="M298 78L309 108L339 119L309 130L298 160L287 130L257 119L287 108Z" fill="#B69558"/>
+  <path d="M350 145L356 161L372 167L356 173L350 189L344 173L328 167L344 161Z" fill="#B69558"/>
+  <path d="M128 310Q190 286 250 316Q310 286 372 310L372 339Q310 315 250 345Q190 315 128 339Z" stroke="#39263F" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M250 316V345" stroke="#39263F" stroke-width="6"/>
+  <path d="M112 357Q183 337 250 359Q317 337 388 357" stroke="#B69558" stroke-width="3" stroke-linecap="round"/>
+</g>
+  <text x="250" y="230" font-family="Georgia,serif" font-size="48" letter-spacing="2" fill="#39263F">TAROT</text>
+  <text x="250" y="267" font-family="Arial,sans-serif" font-size="18" letter-spacing="5" fill="#39263F">FOUNDATION</text>
+  <path d="M250 292H490" stroke="#B69558" stroke-width="2"/>
+
+</svg>

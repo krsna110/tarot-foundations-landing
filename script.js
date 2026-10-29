@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // 8. Single-Open FAQ Details Fallback
   initFaqAccordion();
 
-  // 9. Video Testimonials Auto-Pause & Player
+  // 9. Continuous student testimonial carousel
+  initTestimonialMarquee();
+
+  // 10. Video Testimonials Auto-Pause & Player
   initVideoTestimonials();
 });
 
@@ -61,7 +64,8 @@ function initStarfield() {
     canvas.style.height = `${h}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const count = Math.min(220, Math.round((w * h) / 9000));
+    const maxStars = w < 640 ? 90 : 220;
+    const count = Math.min(maxStars, Math.round((w * h) / 9000));
     stars = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -311,7 +315,7 @@ function initSampleReading() {
 
 /* ================= 5. Scroll Reveal Observer ================= */
 function initScrollReveal() {
-  const revealElements = document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(".reveal, .reveal-scale, .reveal-left, .reveal-right");
   if (!revealElements.length) return;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
@@ -368,15 +372,75 @@ function initFaqAccordion() {
   });
 }
 
-/* ================= 8. Video Testimonials Auto-Pause & Player ================= */
+/* ================= 9. Continuous Student Testimonial Carousel ================= */
+function initTestimonialMarquee() {
+  const wrapper = document.querySelector(".marquee-track-wrapper");
+  const track = wrapper?.querySelector(".marquee-track");
+  const group = track?.querySelector(".marquee-group");
+
+  if (!wrapper || !track || !group || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const clone = group.cloneNode(true);
+  clone.setAttribute("aria-hidden", "true");
+  clone.inert = true;
+
+  clone.querySelectorAll("video").forEach((video) => {
+    const poster = video.getAttribute("poster");
+    if (!poster) {
+      video.remove();
+      return;
+    }
+
+    const preview = document.createElement("img");
+    preview.className = "testimonial-video";
+    preview.src = poster;
+    preview.alt = "";
+    preview.loading = "lazy";
+    video.replaceWith(preview);
+  });
+  clone.querySelectorAll(".video-play-btn").forEach((button) => button.remove());
+  track.append(clone);
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      track.classList.toggle("is-offscreen", !entry.isIntersecting);
+    });
+    observer.observe(wrapper);
+  }
+
+  wrapper.addEventListener("pointerdown", () => track.classList.add("is-paused"), { passive: true });
+  ["pointerup", "pointercancel"].forEach((eventName) => {
+    wrapper.addEventListener(eventName, () => {
+      if (!track.querySelector(".video-card.is-playing")) {
+        track.classList.remove("is-paused");
+      }
+    }, { passive: true });
+  });
+
+  wrapper.addEventListener("focusin", () => track.classList.add("is-paused"));
+  wrapper.addEventListener("focusout", (event) => {
+    if (!wrapper.contains(event.relatedTarget) && !track.querySelector(".video-card.is-playing")) {
+      track.classList.remove("is-paused");
+    }
+  });
+}
+
+/* ================= 10. Video Testimonials Auto-Pause & Player ================= */
 function initVideoTestimonials() {
   const cards = document.querySelectorAll(".video-card");
   if (!cards.length) return;
 
-  const allVideos = document.querySelectorAll(".testimonial-video");
+  const allVideos = document.querySelectorAll("video.testimonial-video");
+  const marqueeTrack = document.querySelector(".marquee-track");
+
+  function resumeMarqueeIfIdle() {
+    if (![...allVideos].some((video) => !video.paused)) {
+      marqueeTrack?.classList.remove("is-paused");
+    }
+  }
 
   cards.forEach((card) => {
-    const video = card.querySelector(".testimonial-video");
+    const video = card.querySelector("video.testimonial-video");
     const playBtn = card.querySelector(".video-play-btn");
     if (!video) return;
 
@@ -387,7 +451,9 @@ function initVideoTestimonials() {
             v.pause();
           }
         });
-        video.play().catch(() => {});
+        video.play().catch((error) => {
+          console.error("Could not play testimonial video:", error);
+        });
       } else {
         video.pause();
       }
@@ -406,15 +472,18 @@ function initVideoTestimonials() {
           v.pause();
         }
       });
+      marqueeTrack?.classList.add("is-paused");
       card.classList.add("is-playing");
     });
 
     video.addEventListener("pause", () => {
       card.classList.remove("is-playing");
+      resumeMarqueeIfIdle();
     });
 
     video.addEventListener("ended", () => {
       card.classList.remove("is-playing");
+      resumeMarqueeIfIdle();
     });
   });
 }

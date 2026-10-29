@@ -1949,6 +1949,13 @@ h1, h2, h3, h4 {
     transform: none !important;
     transition: none !important;
   }
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .btn-gold::after,
   .hero-flip-in,
   .orbit-ring,
@@ -1961,11 +1968,371 @@ h1, h2, h3, h4 {
   .aurora-glow-2,
   .aurora-glow-3,
   .mentor-frame::before,
-  .price-glow {
+  .price-glow,
+  .urgency-strip::after,
+  .marquee-track {
     animation: none !important;
+  }
+  .marquee-track {
+    transform: none !important;
   }
   .hero-flip,
   .sample-flip {
     transition-duration: 0.01s !important;
+  }
+}
+
+/* ============================================================
+   NEW SECTIONS — Social Proof, Video Marquee, Trust,
+   Guarantee Badge, Urgency Strip, Reveal Animations, Mobile
+   ============================================================ */
+
+/* ============ 1. Social Proof / Stats Counter Strip ============ */
+.stats-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem 2.5rem;
+  background: rgba(35, 17, 56, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-gold);
+  border-radius: 1rem;
+  box-shadow: 0 0 28px rgba(227, 196, 124, 0.1);
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2rem;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1.1;
+  text-shadow: 0 0 18px rgba(227, 196, 124, 0.25);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 560px) {
+  .stats-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ============ 2. Continuous Horizontal Video Marquee ============ */
+.video-marquee-section {
+  overflow: hidden;
+}
+
+.marquee-track-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.marquee-track-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 52s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover,
+.marquee-track:focus-within,
+.marquee-track.is-paused,
+.marquee-track.is-offscreen {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  width: max-content;
+  flex-shrink: 0;
+  padding-right: 1.5rem;
+}
+
+.marquee-track .video-card {
+  flex: 0 0 320px;
+  width: 320px;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-track .video-card {
+    flex-basis: 260px;
+    width: 260px;
+  }
+}
+
+/* ============ 3. Trust & Credentials Section ============ */
+.trust-section {
+  padding: 4.5rem 0;
+}
+
+.trust-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 1.75rem 1.5rem;
+  background: rgba(35, 17, 56, 0.5);
+  border: 1px solid var(--border-gold);
+  border-radius: 1rem;
+  flex: 1 1 200px;
+  max-width: 260px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trust-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(227, 196, 124, 0.2);
+}
+
+.trust-icon {
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.trust-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+}
+
+.trust-subtitle {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .trust-item {
+    max-width: none;
+  }
+}
+
+/* ============ 4. Money-Back Guarantee Badge ============ */
+.guarantee-badge {
+  max-width: 480px;
+  margin: 2.5rem auto 0;
+  padding: 1.5rem 2rem;
+  border: 2px dashed var(--gold);
+  border-radius: 1rem;
+  background: rgba(227, 196, 124, 0.08);
+  text-align: center;
+  animation: guarantee-pulse 4s ease-in-out infinite;
+}
+
+.guarantee-badge .guarantee-icon {
+  font-size: 2.25rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.guarantee-badge .guarantee-heading {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.guarantee-badge .guarantee-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@keyframes guarantee-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(227, 196, 124, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 22px 4px rgba(227, 196, 124, 0.15);
+  }
+}
+
+@media (max-width: 480px) {
+  .guarantee-badge {
+    padding: 1.15rem 1.25rem;
+  }
+}
+
+/* ============ 5. Urgency / Limited Offer Strip ============ */
+.urgency-strip {
+  position: relative;
+  z-index: 20;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+  color: var(--night);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.55rem 1rem;
+}
+
+.urgency-strip::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: 0;
+  width: 44%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-180%) skewX(-18deg);
+  animation: shimmer-sweep 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ============ 6. Mobile-Friendly Entrance Animations ============ */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.3, 1),
+              transform 0.7s cubic-bezier(0.2, 0.6, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.reveal-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.3, 1),
+              transform 0.7s cubic-bezier(0.2, 0.6, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.3, 1),
+              transform 0.7s cubic-bezier(0.2, 0.6, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============ 7. Enhanced Mobile Responsive Tweaks ============ */
+@media (max-width: 480px) {
+  .stats-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 0.75rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .marquee-track .video-card {
+    width: 260px;
+  }
+
+  .guarantee-badge {
+    padding: 1rem 1rem;
+    margin-top: 1.75rem;
+  }
+
+  .urgency-strip {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .trust-item {
+    max-width: none;
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .stats-strip {
+    gap: 1rem 0.5rem;
+    padding: 1rem 0.75rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marquee-track .video-card {
+    width: 240px;
   }
 }
