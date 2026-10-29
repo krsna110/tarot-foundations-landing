@@ -1120,7 +1120,7 @@ h1, h2, h3, h4 {
 
 .sample-front {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1129,12 +1129,17 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 30px rgba(227, 196, 124, 0.12);
   padding: 1rem;
   text-align: center;
+  overflow: hidden;
 }
 
-.sample-icon {
-  font-family: var(--font-display);
-  font-size: 1.85rem;
-  color: rgba(227, 196, 124, 0.9);
+.sample-front-art {
+  position: absolute;
+  inset: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  object-fit: contain;
+  border-radius: 0.8rem;
+  pointer-events: none;
 }
 
 .sample-label {
@@ -1198,9 +1203,6 @@ h1, h2, h3, h4 {
   }
   .sample-front {
     padding: 0.65rem 0.4rem;
-  }
-  .sample-icon {
-    font-size: 1.45rem;
   }
   .sample-label {
     font-size: 0.58rem;
