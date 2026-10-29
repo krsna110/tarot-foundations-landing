@@ -312,7 +312,7 @@ function initScrollReveal() {
   if (!revealElements.length) return;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-    revealElements.forEach((el) => el.classList.add("reveal-visible"));
+    revealElements.forEach((el) => el.classList.add("reveal-visible", "active"));
     return;
   }
 
@@ -320,7 +320,7 @@ function initScrollReveal() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("reveal-visible");
+          entry.target.classList.add("reveal-visible", "active");
           observer.unobserve(entry.target);
         }
       });
