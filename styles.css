@@ -857,7 +857,9 @@ h1, h2, h3, h4 {
 
 @media (min-width: 768px) {
   .fan-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 980px;
+    margin-inline: auto;
     gap: 1.25rem;
     margin-top: 4rem;
   }
@@ -1852,7 +1854,7 @@ h1, h2, h3, h4 {
   border-block: 1px solid rgba(227, 196, 124, 0.2);
   background:
     linear-gradient(90deg, rgba(21, 11, 36, 0.94), rgba(21, 11, 36, 0.84)),
-    url("assets/fan-timing.webp") center 58% / cover no-repeat;
+    url("assets/fan-astrology.webp") center 58% / cover no-repeat;
   padding: 5rem 0;
 }
 
