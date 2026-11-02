@@ -511,43 +511,7 @@ h1, h2, h3, h4 {
   pointer-events: auto;
 }
 
-.vsl-placeholder-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  background: rgba(13, 6, 24, 0.78);
-  border: 1px solid rgba(227, 196, 124, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--gold-soft);
-  letter-spacing: 0.03em;
-}
 
-.vsl-badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 6px #10b981;
-}
-
-.vsl-placeholder-text {
-  position: absolute;
-  bottom: 1.25rem;
-  font-size: clamp(0.72rem, 2vw, 0.82rem);
-  color: rgba(220, 207, 240, 0.65);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-family: var(--font-body);
-  pointer-events: none;
-}
 
 .vsl-play-btn {
   position: relative;
