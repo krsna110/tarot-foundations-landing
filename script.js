@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. Ambient Twinkling Starfield with Meteors & Interactive Stardust Trail
   initStarfield();
 
-  // 3. Hero Tarot Card 3D Tilt & Flip
-  initHeroTarotCard();
+  // 3. Hero VSL Player
+  initVslPlayer();
 
   // 4. Tarot Fan System
   initTarotFan();
@@ -229,41 +229,59 @@ function initStarfield() {
   }, { passive: true });
 }
 
-/* ================= 2. Hero Tarot Card 3D Tilt & Flip ================= */
-function initHeroTarotCard() {
-  const card = document.getElementById("heroTarotCard");
-  if (!card) return;
+/* ================= 2. Hero VSL Player ================= */
+function initVslPlayer() {
+  const wrapper = document.getElementById("vslPlayerWrapper");
+  const video = document.getElementById("vslVideo");
+  const playBtn = document.getElementById("vslPlayBtn");
+  if (!wrapper || !video) return;
 
-  const tiltEl = card.querySelector(".hero-tilt");
-  const canHover = window.matchMedia("(hover: hover)");
+  function handlePlay() {
+    // Pause any other playing testimonial videos
+    document.querySelectorAll("video.testimonial-video").forEach((v) => {
+      if (!v.paused) v.pause();
+    });
 
-  card.addEventListener("pointermove", (e) => {
-    if (!canHover.matches || !tiltEl) return;
-    const rect = card.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width;
-    const py = (e.clientY - rect.top) / rect.height;
-    tiltEl.style.setProperty("--ry", `${(px - 0.5) * 18}deg`);
-    tiltEl.style.setProperty("--rx", `${(py - 0.5) * -14}deg`);
-    tiltEl.style.setProperty("--mx", `${px * 100}%`);
-    tiltEl.style.setProperty("--my", `${py * 100}%`);
-  });
+    const sourceEl = video.querySelector("source");
+    const src = sourceEl ? sourceEl.getAttribute("src") : video.src;
 
-  card.addEventListener("pointerleave", () => {
-    if (!tiltEl) return;
-    tiltEl.style.setProperty("--ry", "0deg");
-    tiltEl.style.setProperty("--rx", "0deg");
-  });
+    // Enable native controls when user interacts
+    video.controls = true;
 
-  function toggleFlip() {
-    card.classList.toggle("is-flipped");
+    if (!src) {
+      console.info("VSL source pending configuration.");
+      return;
+    }
+
+    video.play().then(() => {
+      wrapper.classList.add("is-playing");
+    }).catch((err) => {
+      console.info("VSL playback ready or source pending:", err);
+      wrapper.classList.add("is-playing");
+    });
   }
 
-  card.addEventListener("click", toggleFlip);
-  card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleFlip();
+  if (playBtn) {
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      handlePlay();
+    });
+  }
+
+  video.addEventListener("play", () => {
+    video.controls = true;
+    wrapper.classList.add("is-playing");
+  });
+
+  video.addEventListener("pause", () => {
+    if (video.currentTime === 0 || video.ended) {
+      wrapper.classList.remove("is-playing");
     }
+  });
+
+  video.addEventListener("ended", () => {
+    wrapper.classList.remove("is-playing");
+    video.controls = false;
   });
 }
 

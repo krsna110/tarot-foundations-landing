@@ -58,76 +58,78 @@
     <header class="hero-section">
       <div class="hero-bg-glow" aria-hidden="true"></div>
 
-      <div class="container">
-        <!-- Navigation -->
+      <div class="container hero-container">
+        <!-- 1. Top Navigation -->
         <nav class="top-nav">
           <span class="nav-brand">Dr. Anchal Rana Aggarwal</span>
           <a href="#join" class="btn-gold btn-gold-sm"><span class="btn-icon">✦</span> Course Join karein, ₹599</a>
         </nav>
 
-        <!-- Hero Content Grid -->
-        <div class="hero-grid">
-          <div class="hero-content reveal">
-            <div class="live-status-pill">
-              <span class="status-pulse-dot"></span>
-              <span>Dr. Anchal Rana Aggarwal · 10+ Years Experience</span>
-            </div>
-            <p class="eyebrow">TAROT FOUNDATION COURSE</p>
-            <h1 class="hero-title">
-              Webinar bhi kiya, course bhi kiya. Reading mein confidence phir bhi nahi aaya?
-            </h1>
-
-            <div class="hero-cta-group">
-              <a href="#join" class="btn-gold"><span class="btn-icon">✦</span> Course Join karein, ₹599</a>
-            </div>
-            <p class="hero-subtext">
-              Tarot Card Meanings, Planetary Connections aur Astrology ko ek connected system mein samjhein — <strong class="text-gold">Dr. Anchal Rana Aggarwal ke 10+ years of experience ke
-                saath.</strong>
-            </p>
+        <!-- Centered VSL Hero Content -->
+        <div class="hero-vsl-content reveal">
+          <!-- 2. Subtle Experience Badge -->
+          <div class="live-status-pill">
+            <span class="status-pulse-dot" aria-hidden="true"></span>
+            <span>Dr. Anchal Rana Aggarwal · 10+ Years Experience</span>
           </div>
 
-          <!-- Hero Tarot Card with 3D Tilt & Flip -->
-          <div class="hero-card-wrapper reveal" style="transition-delay: 150ms;">
-            <div class="hero-card-container">
-              <div class="orbit-ring" aria-hidden="true"></div>
-              <div class="orbit-ring-outer" aria-hidden="true"></div>
-              <span class="floating-glyph glyph-1" aria-hidden="true">✦</span>
-              <span class="floating-glyph glyph-2" aria-hidden="true">☽</span>
-              <span class="floating-glyph glyph-3" aria-hidden="true">☼</span>
+          <!-- 3. Course Label -->
+          <p class="eyebrow">TAROT FOUNDATION COURSE</p>
 
-              <!-- Price Badge -->
-              <div class="hero-price-badge">
-                <span class="badge-price">₹599</span>
-                <span class="badge-sub">ek baar ka payment</span>
-              </div>
+          <!-- 4. Centered Headline -->
+          <h1 class="hero-title">
+            Webinar bhi kiya, course bhi kiya.<br class="headline-br">
+            Reading mein confidence phir bhi nahi aaya?
+          </h1>
 
-              <!-- Interactive Card -->
-              <div id="heroTarotCard" class="tarot-card-interactive" role="button" tabindex="0"
-                aria-label="Tarot card — flip karne ke liye tap karo">
-                <div class="hero-tilt">
-                  <div class="hero-flip-in">
-                    <div class="hero-flip">
-                      <!-- Front Face -->
-                      <div class="hero-face hero-front card-foil">
-                        <img src="assets/tarot-card-front.webp" alt="The High Priestess tarot card" class="card-img"
-                          width="768" height="1216" fetchpriority="high" decoding="async">
-                        <div class="hero-card-caption">
-                          <p class="caption-title">Dr. Anchal Rana Aggarwal</p>
-                          <p class="caption-sub">Tarot aur astrology mein 10+ Years experience</p>
-                        </div>
-                      </div>
-                      <!-- Back Face -->
-                      <div class="hero-face hero-back">
-                        <div class="back-circle">
-                          <span class="back-star">✦</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          <!-- 5. Short Supporting Description -->
+          <p class="hero-desc">
+            Tarot Card Meanings, Planetary Connections aur Astrology ko ek connected system mein samjhein — <strong class="text-gold">Dr. Anchal Rana Aggarwal ke 10+ years of experience ke saath.</strong>
+          </p>
+
+          <!-- 6. Large, Centered VSL Video Player (Placeholder - Ready for Video Link) -->
+          <div class="vsl-player-wrapper" id="vslPlayerWrapper">
+            <div class="vsl-frame">
+              <video id="vslVideo" class="vsl-video" preload="metadata" playsinline
+                aria-label="Tarot Foundation Course Video Introduction by Dr. Anchal Rana Aggarwal">
+                <source id="vslSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="vsl-placeholder-overlay" id="vslPlaceholderOverlay">
+                <div class="vsl-placeholder-badge">
+                  <span class="vsl-badge-dot" aria-hidden="true"></span>
+                  <span>Course Introduction (VSL)</span>
                 </div>
+                <button type="button" class="vsl-play-btn" id="vslPlayBtn" aria-label="Play video introduction">
+                  <span class="vsl-play-icon" aria-hidden="true">▶</span>
+                </button>
+                <p class="vsl-placeholder-text">Video Link Placeholder · Ready for Link Integration</p>
               </div>
+            </div>
+          </div>
 
-              <p class="card-instruction">Tap the card</p>
+          <!-- 7. Prominent CTA Directly Below Video -->
+          <div class="hero-cta-wrap">
+            <a href="#join" class="btn-gold btn-lg"><span class="btn-icon">✦</span> Course Join karein, ₹599</a>
+          </div>
+
+          <!-- 8. Compact Benefits Row Below CTA -->
+          <div class="hero-benefits-row" role="list" aria-label="Course highlights">
+            <div class="hero-benefit-item" role="listitem">
+              <span class="benefit-icon" aria-hidden="true">✦</span>
+              <span>Course Introduction (VSL)</span>
+            </div>
+            <div class="hero-benefit-item" role="listitem">
+              <span class="benefit-icon" aria-hidden="true">✦</span>
+              <span>Structured Learning</span>
+            </div>
+            <div class="hero-benefit-item" role="listitem">
+              <span class="benefit-icon" aria-hidden="true">✦</span>
+              <span>Mobile Friendly</span>
+            </div>
+            <div class="hero-benefit-item" role="listitem">
+              <span class="benefit-icon" aria-hidden="true">✦</span>
+              <span>Beginner Friendly</span>
             </div>
           </div>
         </div>
