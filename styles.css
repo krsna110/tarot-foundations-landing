@@ -616,32 +616,7 @@ h1, h2, h3, h4 {
   }
 }
 
-/* 8. Compact Benefits Row Below CTA */
-.hero-benefits-row {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.85rem 1.85rem;
-  padding: 0 0.5rem;
-}
 
-.hero-benefit-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-body);
-  font-size: clamp(0.78rem, 2.2vw, 0.875rem);
-  font-weight: 500;
-  color: var(--mist);
-  letter-spacing: 0.02em;
-}
-
-.benefit-icon {
-  color: var(--gold);
-  font-size: 0.75rem;
-}
 
 /* ============ Problem Section ============ */
 .grid-two-col {
