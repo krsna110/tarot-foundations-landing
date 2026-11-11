@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* ============ Dedicated Thank You Page Styles ============ */
+    /* ============ Dedicated Animated Thank You Page Styles ============ */
     .thankyou-wrapper {
       min-height: 100vh;
       display: flex;
@@ -39,6 +39,7 @@
       max-width: 860px;
       margin: 0 auto;
       width: 100%;
+      animation: fadeIn 0.8s ease backwards;
     }
 
     .thankyou-main {
@@ -54,63 +55,184 @@
       width: 100%;
       margin: 0 auto;
       text-align: center;
+      position: relative;
     }
 
-    /* Cosmic Success Icon */
+    /* Staggered entrance animations */
+    .anim-fade-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+    .delay-5 { animation-delay: 0.7s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cosmic Success Icon with Pop & Radiant Pulses */
     .success-badge-wrap {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.35rem;
       display: inline-flex;
       position: relative;
     }
 
     .success-icon-circle {
-      width: 82px;
-      height: 82px;
+      width: 86px;
+      height: 86px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #2ef08b 0%, #10b981 60%, #065f46 100%);
-      border: 2px solid rgba(167, 243, 208, 0.8);
+      background: radial-gradient(circle at 35% 35%, #2ef08b 0%, #10b981 55%, #065f46 100%);
+      border: 2.5px solid rgba(167, 243, 208, 0.85);
       display: grid;
       place-items: center;
       color: #042f1f;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 700;
-      box-shadow: 0 0 50px rgba(16, 185, 129, 0.55), 0 14px 35px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 55px rgba(16, 185, 129, 0.65), 0 16px 36px rgba(0, 0, 0, 0.55);
       position: relative;
       z-index: 2;
+      animation: checkmarkPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
-    .success-icon-circle::before {
+    /* Dual Pulsing Wave Rings */
+    .success-icon-circle::before,
+    .success-icon-circle::after {
       content: "";
       position: absolute;
-      inset: -8px;
+      inset: -10px;
       border-radius: 50%;
-      border: 1.5px solid rgba(16, 185, 129, 0.5);
-      animation: pulse-ring 2.6s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      border: 1.5px solid rgba(16, 185, 129, 0.55);
+      animation: successPulse 2.8s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
     }
 
+    .success-icon-circle::after {
+      inset: -18px;
+      border-color: rgba(227, 196, 124, 0.45);
+      animation-delay: 1.1s;
+    }
+
+    @keyframes checkmarkPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.2) rotate(-30deg);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.18) rotate(6deg);
+      }
+      85% {
+        transform: scale(0.96) rotate(-2deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes successPulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.9;
+      }
+      65% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    /* Floating Cosmic Glyphs around Checkmark */
+    .floating-star {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 1.1rem;
+      color: var(--gold-soft);
+      text-shadow: 0 0 12px rgba(227, 196, 124, 0.8);
+      animation: floatStar 3.2s ease-in-out infinite alternate;
+    }
+
+    .star-1 {
+      top: -8px;
+      left: -18px;
+      animation-delay: 0s;
+    }
+
+    .star-2 {
+      bottom: -6px;
+      right: -16px;
+      color: #6ee7b7;
+      text-shadow: 0 0 12px rgba(110, 231, 183, 0.8);
+      animation-delay: 1.2s;
+    }
+
+    .star-3 {
+      top: 14px;
+      right: -24px;
+      font-size: 0.85rem;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes floatStar {
+      0% {
+        transform: translateY(0) scale(0.9) rotate(0deg);
+        opacity: 0.45;
+      }
+      100% {
+        transform: translateY(-9px) scale(1.15) rotate(18deg);
+        opacity: 1;
+      }
+    }
+
+    /* Status Pill with Glow Pulse */
     .status-confirmed-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1.1rem;
+      gap: 0.55rem;
+      padding: 0.42rem 1.15rem;
       border-radius: 9999px;
       background: rgba(16, 185, 129, 0.14);
-      border: 1px solid rgba(16, 185, 129, 0.45);
+      border: 1px solid rgba(16, 185, 129, 0.5);
       color: #6ee7b7;
       font-size: 0.82rem;
       font-weight: 600;
       letter-spacing: 0.04em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
       backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.18);
+      transition: transform 0.3s ease;
+    }
+
+    .status-confirmed-pill:hover {
+      transform: scale(1.03);
     }
 
     .thankyou-title {
       font-family: var(--font-display);
       font-size: clamp(2rem, 5vw, 2.75rem);
-      line-height: 1.2;
+      line-height: 1.22;
       color: #ffffff;
       margin-bottom: 0.85rem;
-      text-shadow: 0 2px 20px rgba(227, 196, 124, 0.25);
+      text-shadow: 0 2px 24px rgba(227, 196, 124, 0.28);
     }
 
     .thankyou-subtitle {
@@ -124,30 +246,31 @@
     /* Primary WhatsApp Community Card */
     .whatsapp-action-card {
       background:
-        radial-gradient(ellipse 70% 55% at 50% 20%, rgba(37, 211, 102, 0.12), transparent 70%),
+        radial-gradient(ellipse 70% 55% at 50% 20%, rgba(37, 211, 102, 0.14), transparent 70%),
         radial-gradient(ellipse 70% 60% at 50% 80%, rgba(68, 32, 108, 0.45), transparent 70%),
-        linear-gradient(180deg, rgba(32, 16, 52, 0.92) 0%, rgba(18, 9, 30, 0.96) 100%);
+        linear-gradient(180deg, rgba(32, 16, 52, 0.94) 0%, rgba(18, 9, 30, 0.98) 100%);
       border: 1.5px solid rgba(37, 211, 102, 0.45);
       border-radius: 1.35rem;
-      padding: 2.25rem 1.75rem;
+      padding: 2.35rem 1.85rem;
       box-shadow: 0 0 55px rgba(37, 211, 102, 0.18), 0 20px 50px rgba(0, 0, 0, 0.65);
       position: relative;
       overflow: hidden;
       margin-bottom: 2rem;
       text-align: center;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
     }
 
     .whatsapp-action-card:hover {
-      border-color: rgba(37, 211, 102, 0.7);
-      box-shadow: 0 0 70px rgba(37, 211, 102, 0.28), 0 25px 60px rgba(0, 0, 0, 0.75);
+      border-color: rgba(37, 211, 102, 0.75);
+      box-shadow: 0 0 75px rgba(37, 211, 102, 0.3), 0 25px 65px rgba(0, 0, 0, 0.75);
+      transform: translateY(-2px);
     }
 
     .wa-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.35rem 0.9rem;
+      gap: 0.45rem;
+      padding: 0.35rem 0.95rem;
       border-radius: 9999px;
       background: rgba(37, 211, 102, 0.18);
       border: 1px solid rgba(37, 211, 102, 0.5);
@@ -157,6 +280,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 1.15rem;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.2);
     }
 
     .wa-card-heading {
@@ -175,50 +299,124 @@
       line-height: 1.6;
     }
 
-    /* WhatsApp Button */
+    /* WhatsApp Button Container for Pulsing Rings */
+    .cta-button-wrapper {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    /* Ultra-Engaging WhatsApp CTA Button */
     .btn-whatsapp-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.8rem;
       width: 100%;
-      max-width: 440px;
-      padding: 1.15rem 2rem;
-      font-size: 1.05rem;
+      padding: 1.2rem 2.2rem;
+      font-size: 1.08rem;
       font-weight: 700;
       font-family: var(--font-body);
       color: #ffffff;
-      background: linear-gradient(135deg, #25D366 0%, #1da851 60%, #128C7E 100%);
-      border-radius: 0.75rem;
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 0 45px rgba(37, 211, 102, 0.5), 0 12px 30px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, #28e06f 0%, #1da851 55%, #107e71 100%);
+      border-radius: 0.85rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 50px rgba(37, 211, 102, 0.55), 0 14px 35px rgba(0, 0, 0, 0.55);
       text-decoration: none;
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, filter 0.25s ease;
+      z-index: 2;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, filter 0.28s ease;
+    }
+
+    /* Continuous Shimmer Light Ray across WhatsApp button */
+    .btn-whatsapp-cta::after {
+      content: "";
+      position: absolute;
+      top: -60%;
+      bottom: -60%;
+      left: 0;
+      width: 45%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+      transform: translateX(-180%) skewX(-20deg);
+      animation: ctaShimmer 3.2s ease-in-out infinite;
+    }
+
+    @keyframes ctaShimmer {
+      0% {
+        transform: translateX(-180%) skewX(-20deg);
+      }
+      38%, 100% {
+        transform: translateX(380%) skewX(-20deg);
+      }
+    }
+
+    /* Pulsing Outer Radar Ring */
+    .cta-button-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 1rem;
+      border: 2px solid rgba(37, 211, 102, 0.65);
+      animation: ctaRadar 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes ctaRadar {
+      0% {
+        transform: scale(0.98);
+        opacity: 0.9;
+      }
+      60% {
+        transform: scale(1.08);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.08);
+        opacity: 0;
+      }
     }
 
     .btn-whatsapp-cta:hover {
-      transform: translateY(-2px) scale(1.02);
-      filter: brightness(1.1);
-      box-shadow: 0 0 60px rgba(37, 211, 102, 0.7), 0 16px 36px rgba(0, 0, 0, 0.6);
+      transform: translateY(-3px) scale(1.025);
+      filter: brightness(1.12);
+      box-shadow: 0 0 70px rgba(37, 211, 102, 0.8), 0 18px 42px rgba(0, 0, 0, 0.65);
     }
 
     .btn-whatsapp-cta:active {
-      transform: translateY(0) scale(0.99);
+      transform: translateY(0) scale(0.98);
     }
 
     .wa-icon-svg {
-      width: 24px;
-      height: 24px;
+      width: 25px;
+      height: 25px;
       fill: currentColor;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
 
-    /* 3 Simple Next Steps */
+    /* WhatsApp Icon playful wiggle on hover */
+    .btn-whatsapp-cta:hover .wa-icon-svg {
+      animation: waWiggle 0.65s ease-in-out infinite alternate;
+    }
+
+    @keyframes waWiggle {
+      0% {
+        transform: rotate(-9deg) scale(1.15);
+      }
+      100% {
+        transform: rotate(10deg) scale(1.22);
+      }
+    }
+
+    /* 3 Simple Next Steps Cards with Stagger Hover Lift */
     .steps-grid {
-      margin-top: 2rem;
+      margin-top: 2.25rem;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
@@ -226,74 +424,128 @@
     }
 
     .step-box {
-      background: rgba(23, 11, 38, 0.65);
+      background: rgba(23, 11, 38, 0.72);
       border: 1px solid rgba(227, 196, 124, 0.25);
-      border-radius: 0.85rem;
-      padding: 1.1rem 1rem;
+      border-radius: 0.95rem;
+      padding: 1.2rem 1.05rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.4, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(227, 196, 124, 0.7);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(227, 196, 124, 0.22);
+      background: rgba(30, 14, 50, 0.85);
     }
 
     .step-num {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: var(--gold-metallic);
       color: #1a0f2a;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+
+    .step-box:hover .step-num {
+      transform: scale(1.18) rotate(10deg);
+      box-shadow: 0 0 15px rgba(227, 196, 124, 0.75);
     }
 
     .step-title {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #ffffff;
     }
 
     .step-text {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--muted);
       line-height: 1.45;
     }
 
-    /* Mentor Note Card */
+    /* Mentor Note Card with Celestial Rotating Halo */
     .mentor-note-card {
-      background: rgba(35, 17, 56, 0.6);
+      background: rgba(35, 17, 56, 0.65);
       border: 1px solid var(--border-gold);
-      border-radius: 1rem;
-      padding: 1.35rem 1.5rem;
+      border-radius: 1.15rem;
+      padding: 1.4rem 1.6rem;
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1.35rem;
       text-align: left;
       margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mentor-note-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(227, 196, 124, 0.6);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(227, 196, 124, 0.15);
+    }
+
+    .mentor-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+      width: 66px;
+      height: 66px;
     }
 
     .mentor-avatar {
-      width: 60px;
-      height: 60px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--gold);
-      flex-shrink: 0;
-      box-shadow: 0 0 20px rgba(227, 196, 124, 0.35);
+      box-shadow: 0 0 22px rgba(227, 196, 124, 0.45);
+      position: relative;
+      z-index: 2;
+      transition: transform 0.35s ease;
+    }
+
+    .mentor-note-card:hover .mentor-avatar {
+      transform: scale(1.05);
+    }
+
+    /* Rotating Celestial Orbit around Mentor */
+    .mentor-avatar-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(227, 196, 124, 0.6);
+      animation: rotateOrbit 16s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes rotateOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .mentor-quote {
       font-style: italic;
       color: var(--foreground);
-      font-size: 0.92rem;
-      line-height: 1.5;
+      font-size: 0.94rem;
+      line-height: 1.52;
     }
 
     .mentor-signature {
       display: block;
-      margin-top: 0.35rem;
-      font-size: 0.8rem;
+      margin-top: 0.4rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--gold-soft);
       font-style: normal;
@@ -301,20 +553,49 @@
 
     /* Support Footer Card */
     .support-card {
-      padding: 1.25rem 1rem;
+      padding: 1.35rem 1rem;
       font-size: 0.88rem;
       color: var(--muted);
-      border-top: 1px solid rgba(227, 196, 124, 0.15);
+      border-top: 1px solid rgba(227, 196, 124, 0.18);
     }
 
     .support-card a {
       color: var(--gold);
       text-decoration: underline;
       text-underline-offset: 3px;
+      transition: color 0.2s ease;
     }
 
     .support-card a:hover {
       color: var(--gold-soft);
+    }
+
+    /* Confetti Particle Container */
+    #celebrationBurst {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    /* Reduced Motion Respect */
+    @media (prefers-reduced-motion: reduce) {
+      .anim-fade-up,
+      .success-icon-circle,
+      .success-icon-circle::before,
+      .success-icon-circle::after,
+      .cta-button-wrapper::before,
+      .btn-whatsapp-cta::after,
+      .floating-star,
+      .mentor-avatar-wrap::before {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
 
     @media (max-width: 640px) {
@@ -329,7 +610,7 @@
       .mentor-note-card {
         flex-direction: column;
         text-align: center;
-        gap: 0.85rem;
+        gap: 0.95rem;
       }
     }
   </style>
@@ -356,26 +637,35 @@
     <!-- Main Thank You Content -->
     <main class="thankyou-main">
       <div class="thankyou-card-container">
+        <!-- Floating Celebration Confetti Host -->
+        <div id="celebrationBurst" aria-hidden="true"></div>
         
-        <!-- 1. Success Icon & Badge -->
-        <div class="success-badge-wrap">
-          <div class="success-icon-circle" aria-hidden="true">✓</div>
+        <!-- 1. Success Icon & Badge with Floating Celestial Stars -->
+        <div class="anim-fade-up delay-1">
+          <div class="success-badge-wrap">
+            <span class="floating-star star-1" aria-hidden="true">✦</span>
+            <span class="floating-star star-2" aria-hidden="true">☼</span>
+            <span class="floating-star star-3" aria-hidden="true">☽</span>
+            <div class="success-icon-circle" aria-hidden="true">✓</div>
+          </div>
         </div>
 
-        <div>
+        <div class="anim-fade-up delay-2">
           <div class="status-confirmed-pill">
-            <span class="status-pulse-dot" style="background: #10b981; box-shadow: 0 0 8px #10b981;" aria-hidden="true"></span>
+            <span class="status-pulse-dot" style="background: #10b981; box-shadow: 0 0 10px #10b981;" aria-hidden="true"></span>
             <span>Payment Confirmed · Enrollment Successful</span>
           </div>
         </div>
 
-        <h1 class="thankyou-title">Swagat Hai Tarot Foundation Course Mein!</h1>
-        <p class="thankyou-subtitle">
-          Aapka enrollment successfully confirm ho chuka hai. Tarot ko ratna nahi, samajh kar master karne ki aapki journey yahan se shuru hoti hai.
-        </p>
+        <div class="anim-fade-up delay-2">
+          <h1 class="thankyou-title">Swagat Hai Tarot Foundation Course Mein!</h1>
+          <p class="thankyou-subtitle">
+            Aapka enrollment successfully confirm ho chuka hai. Tarot ko ratna nahi, samajh kar master karne ki aapki journey yahan se shuru hoti hai.
+          </p>
+        </div>
 
         <!-- 2. Primary Action Card: Exclusive WhatsApp Community -->
-        <section class="whatsapp-action-card" aria-label="Join WhatsApp Community">
+        <section class="whatsapp-action-card anim-fade-up delay-3" aria-label="Join WhatsApp Community">
           <div class="wa-badge">
             <span aria-hidden="true">✦</span> Step 1: Sabse Zaroori Action
           </div>
@@ -385,18 +675,20 @@
             Course ke sabhi updates, live sessions, study materials aur schedule exclusive student WhatsApp group mein share kiye jayenge.
           </p>
 
-          <!-- WhatsApp CTA Button: Replace https://chat.whatsapp.com/YOUR_GROUP_LINK with your real group invite link -->
-          <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK" target="_blank" rel="noopener noreferrer"
-            class="btn-whatsapp-cta" id="joinWhatsAppBtn" aria-label="Join Exclusive WhatsApp Community">
-            <svg class="wa-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-            </svg>
-            <span>Join WhatsApp Community Now</span>
-          </a>
+          <!-- Animated WhatsApp CTA Button -->
+          <div class="cta-button-wrapper">
+            <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK" target="_blank" rel="noopener noreferrer"
+              class="btn-whatsapp-cta" id="joinWhatsAppBtn" aria-label="Join Exclusive WhatsApp Community">
+              <svg class="wa-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+              </svg>
+              <span>Join WhatsApp Community Now</span>
+            </a>
+          </div>
 
-          <!-- Simple 3-step guide -->
-          <div class="steps-grid">
+          <!-- Simple 3-step guide with interactive cards -->
+          <div class="steps-grid anim-fade-up delay-4">
             <div class="step-box">
               <span class="step-num">1</span>
               <strong class="step-title">Click Join Button</strong>
@@ -415,9 +707,11 @@
           </div>
         </section>
 
-        <!-- 3. Mentor Welcome Note -->
-        <div class="mentor-note-card">
-          <img src="assets/mentor-portrait.jpeg" alt="Dr. Anchal Rana Aggarwal" class="mentor-avatar" loading="lazy">
+        <!-- 3. Mentor Welcome Note with Celestial Orbit Avatar -->
+        <div class="mentor-note-card anim-fade-up delay-5">
+          <div class="mentor-avatar-wrap">
+            <img src="assets/mentor-portrait.jpeg" alt="Dr. Anchal Rana Aggarwal" class="mentor-avatar" loading="lazy">
+          </div>
           <div>
             <p class="mentor-quote">
               "Tarot tukdon mein nahi, ek connected system hai. Main is journey mein aapka dil se swagat karti hoon. Practice aur consistency ke saath aap cards ko confidently read karna zaroor seekhenge."
@@ -427,7 +721,7 @@
         </div>
 
         <!-- 4. Support & Help Info -->
-        <div class="support-card">
+        <div class="support-card anim-fade-up delay-5">
           <p>
             Koi sawaal ya issue ho? Aap hamari support team se WhatsApp ya email par sampark kar sakte hain.<br>
             <span class="text-gold">Tarot Foundation Course</span> · One-Time Payment Verified · © <span id="currentYear">2026</span>
@@ -438,8 +732,63 @@
     </main>
   </div>
 
-  <!-- JavaScript for Interactive Starfield & Year -->
+  <!-- JavaScript for Interactive Starfield, Confetti & Year -->
   <script src="script.js"></script>
+  <script>
+    // Lightweight celebratory cosmic sparkle burst on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const host = document.getElementById("celebrationBurst");
+      const badge = document.querySelector(".success-icon-circle");
+      if (!host || !badge) return;
+
+      const colors = ["#25D366", "#e3c47c", "#f6e3ae", "#10b981", "#ffffff", "#cbb6e4"];
+      const particleCount = 38;
+
+      setTimeout(() => {
+        const rect = badge.getBoundingClientRect();
+        const hostRect = host.getBoundingClientRect();
+        const originX = rect.left + rect.width / 2 - hostRect.left;
+        const originY = rect.top + rect.height / 2 - hostRect.top;
+
+        for (let i = 0; i < particleCount; i++) {
+          const p = document.createElement("span");
+          const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.45;
+          const distance = 60 + Math.random() * 110;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance - 25;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const size = 4 + Math.random() * 5;
+          const rot = (Math.random() - 0.5) * 540;
+
+          p.style.cssText = `
+            position: absolute;
+            left: ${originX}px;
+            top: ${originY}px;
+            width: ${size}px;
+            height: ${size * (Math.random() > 0.4 ? 1 : 1.7)}px;
+            background: ${color};
+            border-radius: ${Math.random() > 0.5 ? "50%" : "2px"};
+            pointer-events: none;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(0.6);
+            box-shadow: 0 0 10px ${color};
+            transition: transform 1.6s cubic-bezier(0.12, 0.8, 0.32, 1), opacity 1.6s cubic-bezier(0.4, 0, 0.8, 1);
+          `;
+
+          host.appendChild(p);
+
+          requestAnimationFrame(() => {
+            p.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1) rotate(${rot}deg)`;
+            p.style.opacity = "0";
+          });
+
+          setTimeout(() => p.remove(), 1700);
+        }
+      }, 350);
+    });
+  </script>
 </body>
 
 </html>
