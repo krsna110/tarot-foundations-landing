@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 10. Video Testimonials Auto-Pause & Player
   initVideoTestimonials();
+
+  // 11. Meta Pixel InitiateCheckout Tracking on CTA Clicks
+  initMetaPixelTracking();
 });
 
 /* ================= 1. Ambient Starfield, Meteors & Stardust ================= */
@@ -493,6 +496,21 @@ function initVideoTestimonials() {
     video.addEventListener("ended", () => {
       card.classList.remove("is-playing");
       resumeMarqueeIfIdle();
+    });
+  });
+}
+
+/* ================= 11. Meta Pixel CTA Click Tracking ================= */
+function initMetaPixelTracking() {
+  document.querySelectorAll('a[href*="rzp.io"]').forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "InitiateCheckout", {
+          content_name: "Tarot Foundation Course",
+          value: 599.00,
+          currency: "INR"
+        });
+      }
     });
   });
 }
