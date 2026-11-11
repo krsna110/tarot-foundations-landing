@@ -232,9 +232,10 @@ function initStarfield() {
 /* ================= 2. Hero VSL Player ================= */
 function initVslPlayer() {
   const wrapper = document.getElementById("vslPlayerWrapper");
-  const video = document.getElementById("vslVideo");
+  const iframe = document.getElementById("vslIframe");
   const playBtn = document.getElementById("vslPlayBtn");
-  if (!wrapper || !video) return;
+  const overlay = document.getElementById("vslPlaceholderOverlay");
+  if (!wrapper || !iframe) return;
 
   function handlePlay() {
     // Pause any other playing testimonial videos
@@ -242,23 +243,12 @@ function initVslPlayer() {
       if (!v.paused) v.pause();
     });
 
-    const sourceEl = video.querySelector("source");
-    const src = sourceEl ? sourceEl.getAttribute("src") : video.src;
-
-    // Enable native controls when user interacts
-    video.controls = true;
-
-    if (!src) {
-      console.info("VSL source pending configuration.");
-      return;
+    let src = iframe.getAttribute("src") || "";
+    if (!src.includes("autoplay=1")) {
+      const sep = src.includes("?") ? "&" : "?";
+      iframe.setAttribute("src", src + sep + "autoplay=1");
     }
-
-    video.play().then(() => {
-      wrapper.classList.add("is-playing");
-    }).catch((err) => {
-      console.info("VSL playback ready or source pending:", err);
-      wrapper.classList.add("is-playing");
-    });
+    wrapper.classList.add("is-playing");
   }
 
   if (playBtn) {
@@ -268,21 +258,9 @@ function initVslPlayer() {
     });
   }
 
-  video.addEventListener("play", () => {
-    video.controls = true;
-    wrapper.classList.add("is-playing");
-  });
-
-  video.addEventListener("pause", () => {
-    if (video.currentTime === 0 || video.ended) {
-      wrapper.classList.remove("is-playing");
-    }
-  });
-
-  video.addEventListener("ended", () => {
-    wrapper.classList.remove("is-playing");
-    video.controls = false;
-  });
+  if (overlay) {
+    overlay.addEventListener("click", handlePlay);
+  }
 }
 
 /* ================= 3. Tarot Fan System ================= */
@@ -476,6 +454,12 @@ function initVideoTestimonials() {
             v.pause();
           }
         });
+        const vslIframe = document.getElementById("vslIframe");
+        if (vslIframe && vslIframe.contentWindow) {
+          try {
+            vslIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          } catch (_) {}
+        }
         video.play().catch((error) => {
           console.error("Could not play testimonial video:", error);
         });
