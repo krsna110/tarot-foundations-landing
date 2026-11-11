@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="hi-Latn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Thank You — Tarot Foundation Course | Dr. Anchal Rana Aggarwal</title>
+  <meta name="description"
+    content="Tarot Foundation Course mein aapka swagat hai. Kripya apna enrollment confirm karein aur exclusive WhatsApp community join karein.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ============ Dedicated Thank You Page Styles ============ */
+    .thankyou-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+    }
+
+    .thankyou-nav {
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .thankyou-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    .thankyou-card-container {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Cosmic Success Icon */
+    .success-badge-wrap {
+      margin-bottom: 1.25rem;
+      display: inline-flex;
+      position: relative;
+    }
+
+    .success-icon-circle {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #2ef08b 0%, #10b981 60%, #065f46 100%);
+      border: 2px solid rgba(167, 243, 208, 0.8);
+      display: grid;
+      place-items: center;
+      color: #042f1f;
+      font-size: 2.2rem;
+      font-weight: 700;
+      box-shadow: 0 0 50px rgba(16, 185, 129, 0.55), 0 14px 35px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 2;
+    }
+
+    .success-icon-circle::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(16, 185, 129, 0.5);
+      animation: pulse-ring 2.6s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+    }
+
+    .status-confirmed-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #6ee7b7;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .thankyou-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 2px 20px rgba(227, 196, 124, 0.25);
+    }
+
+    .thankyou-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.6;
+    }
+
+    /* Primary WhatsApp Community Card */
+    .whatsapp-action-card {
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 20%, rgba(37, 211, 102, 0.12), transparent 70%),
+        radial-gradient(ellipse 70% 60% at 50% 80%, rgba(68, 32, 108, 0.45), transparent 70%),
+        linear-gradient(180deg, rgba(32, 16, 52, 0.92) 0%, rgba(18, 9, 30, 0.96) 100%);
+      border: 1.5px solid rgba(37, 211, 102, 0.45);
+      border-radius: 1.35rem;
+      padding: 2.25rem 1.75rem;
+      box-shadow: 0 0 55px rgba(37, 211, 102, 0.18), 0 20px 50px rgba(0, 0, 0, 0.65);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      text-align: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .whatsapp-action-card:hover {
+      border-color: rgba(37, 211, 102, 0.7);
+      box-shadow: 0 0 70px rgba(37, 211, 102, 0.28), 0 25px 60px rgba(0, 0, 0, 0.75);
+    }
+
+    .wa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(37, 211, 102, 0.18);
+      border: 1px solid rgba(37, 211, 102, 0.5);
+      color: #4ade80;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.15rem;
+    }
+
+    .wa-card-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      line-height: 1.28;
+    }
+
+    .wa-card-desc {
+      font-size: 0.98rem;
+      color: var(--foreground);
+      max-width: 500px;
+      margin: 0 auto 1.85rem;
+      line-height: 1.6;
+    }
+
+    /* WhatsApp Button */
+    .btn-whatsapp-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 440px;
+      padding: 1.15rem 2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      color: #ffffff;
+      background: linear-gradient(135deg, #25D366 0%, #1da851 60%, #128C7E 100%);
+      border-radius: 0.75rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 0 45px rgba(37, 211, 102, 0.5), 0 12px 30px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, filter 0.25s ease;
+    }
+
+    .btn-whatsapp-cta:hover {
+      transform: translateY(-2px) scale(1.02);
+      filter: brightness(1.1);
+      box-shadow: 0 0 60px rgba(37, 211, 102, 0.7), 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-whatsapp-cta:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    .wa-icon-svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* 3 Simple Next Steps */
+    .steps-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .step-box {
+      background: rgba(23, 11, 38, 0.65);
+      border: 1px solid rgba(227, 196, 124, 0.25);
+      border-radius: 0.85rem;
+      padding: 1.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--gold-metallic);
+      color: #1a0f2a;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .step-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .step-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Mentor Note Card */
+    .mentor-note-card {
+      background: rgba(35, 17, 56, 0.6);
+      border: 1px solid var(--border-gold);
+      border-radius: 1rem;
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .mentor-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(227, 196, 124, 0.35);
+    }
+
+    .mentor-quote {
+      font-style: italic;
+      color: var(--foreground);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .mentor-signature {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-soft);
+      font-style: normal;
+    }
+
+    /* Support Footer Card */
+    .support-card {
+      padding: 1.25rem 1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(227, 196, 124, 0.15);
+    }
+
+    .support-card a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .support-card a:hover {
+      color: var(--gold-soft);
+    }
+
+    @media (max-width: 640px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .whatsapp-action-card {
+        padding: 1.85rem 1.25rem;
+      }
+
+      .mentor-note-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.85rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Ambient Twinkling Starfield Canvas -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- Ambient Cosmic Aurora Nebula -->
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="aurora-glow-1"></div>
+    <div class="aurora-glow-2"></div>
+    <div class="aurora-glow-3"></div>
+  </div>
+
+  <div class="thankyou-wrapper">
+    <!-- Top Navigation -->
+    <header class="thankyou-nav">
+      <a href="index.html" class="nav-brand" style="text-decoration: none;">Dr. Anchal Rana Aggarwal</a>
+      <a href="index.html" class="btn-text-gold" style="font-size: 0.85rem;">← Back to Home</a>
+    </header>
+
+    <!-- Main Thank You Content -->
+    <main class="thankyou-main">
+      <div class="thankyou-card-container">
+        
+        <!-- 1. Success Icon & Badge -->
+        <div class="success-badge-wrap">
+          <div class="success-icon-circle" aria-hidden="true">✓</div>
+        </div>
+
+        <div>
+          <div class="status-confirmed-pill">
+            <span class="status-pulse-dot" style="background: #10b981; box-shadow: 0 0 8px #10b981;" aria-hidden="true"></span>
+            <span>Payment Confirmed · Enrollment Successful</span>
+          </div>
+        </div>
+
+        <h1 class="thankyou-title">Swagat Hai Tarot Foundation Course Mein!</h1>
+        <p class="thankyou-subtitle">
+          Aapka enrollment successfully confirm ho chuka hai. Tarot ko ratna nahi, samajh kar master karne ki aapki journey yahan se shuru hoti hai.
+        </p>
+
+        <!-- 2. Primary Action Card: Exclusive WhatsApp Community -->
+        <section class="whatsapp-action-card" aria-label="Join WhatsApp Community">
+          <div class="wa-badge">
+            <span aria-hidden="true">✦</span> Step 1: Sabse Zaroori Action
+          </div>
+
+          <h2 class="wa-card-heading">Hamari Student WhatsApp Community Join Karein</h2>
+          <p class="wa-card-desc">
+            Course ke sabhi updates, live sessions, study materials aur schedule exclusive student WhatsApp group mein share kiye jayenge.
+          </p>
+
+          <!-- WhatsApp CTA Button: Replace https://chat.whatsapp.com/YOUR_GROUP_LINK with your real group invite link -->
+          <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK" target="_blank" rel="noopener noreferrer"
+            class="btn-whatsapp-cta" id="joinWhatsAppBtn" aria-label="Join Exclusive WhatsApp Community">
+            <svg class="wa-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+            <span>Join WhatsApp Community Now</span>
+          </a>
+
+          <!-- Simple 3-step guide -->
+          <div class="steps-grid">
+            <div class="step-box">
+              <span class="step-num">1</span>
+              <strong class="step-title">Click Join Button</strong>
+              <span class="step-text">Upar diye gaye green button par tap karein.</span>
+            </div>
+            <div class="step-box">
+              <span class="step-num">2</span>
+              <strong class="step-title">Accept Invite</strong>
+              <span class="step-text">WhatsApp open hoga, 'Join Group' select karein.</span>
+            </div>
+            <div class="step-box">
+              <span class="step-num">3</span>
+              <strong class="step-title">Read Pinned Post</strong>
+              <span class="step-text">Group ke pinned message mein saari link milengi.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Mentor Welcome Note -->
+        <div class="mentor-note-card">
+          <img src="assets/mentor-portrait.jpeg" alt="Dr. Anchal Rana Aggarwal" class="mentor-avatar" loading="lazy">
+          <div>
+            <p class="mentor-quote">
+              "Tarot tukdon mein nahi, ek connected system hai. Main is journey mein aapka dil se swagat karti hoon. Practice aur consistency ke saath aap cards ko confidently read karna zaroor seekhenge."
+            </p>
+            <span class="mentor-signature">— Dr. Anchal Rana Aggarwal · Mentor</span>
+          </div>
+        </div>
+
+        <!-- 4. Support & Help Info -->
+        <div class="support-card">
+          <p>
+            Koi sawaal ya issue ho? Aap hamari support team se WhatsApp ya email par sampark kar sakte hain.<br>
+            <span class="text-gold">Tarot Foundation Course</span> · One-Time Payment Verified · © <span id="currentYear">2026</span>
+          </p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript for Interactive Starfield & Year -->
+  <script src="script.js"></script>
+</body>
+
+</html>
